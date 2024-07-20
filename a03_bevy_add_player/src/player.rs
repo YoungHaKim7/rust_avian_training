@@ -12,23 +12,6 @@ impl Plugin for PlayerPlugin {
 }
 
 fn spawn_player(mut commands: Commands, assets: Res<AssetServer>) {
-    // let flashlight = (
-    //     SpotLightBundle {
-    //         spot_light: SpotLight {
-    //             color: Color::rgba(1.0, 1.0, 0.47, 1.0),
-    //             range: 10.0,
-    //             intensity: 4000.0 * 1000.0,
-    //             outer_angle: 0.5,
-    //             inner_angle: 0.4,
-    //             shadows_enabled: true,
-    //             ..default()
-    //         },
-    //         transform: Transform::from_xyz(0.0, 0.25, -0.3),
-    //         ..default()
-    //     },
-    //     Name::new("Flashlight"),
-    // );
-
     let player = (
         SceneBundle {
             scene: assets.load("player/Player.gltf#Scene0"),
@@ -36,16 +19,12 @@ fn spawn_player(mut commands: Commands, assets: Res<AssetServer>) {
             transform: Transform::from_xyz(2.0, 0.5, 6.0),
             ..default()
         },
-        // ActiveEvents::COLLISION_EVENTS,
         Player,
         Name::new("Player"),
         ThirdPersonCameraTarget,
         Speed(2.5),
-        // Jump(4.0),
-        // Grounded(false),
-        // LockedAxes::ROTATION_LOCKED_X | LockedAxes::ROTATION_LOCKED_Z,
-        Collider::cylinder(0.5, 0.25),
-        RigidBody::Dynamic,
+        // Collider::cylinder(0.5, 0.25),
+        // RigidBody::Dynamic,
     );
 
     commands.spawn(player);
