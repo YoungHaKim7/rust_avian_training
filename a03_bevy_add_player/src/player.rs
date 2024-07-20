@@ -16,15 +16,15 @@ fn spawn_player(mut commands: Commands, assets: Res<AssetServer>) {
         SceneBundle {
             scene: assets.load("player/Player.gltf#Scene0"),
             // scene: assets.load("player/player_character.glb#Scene0"),
-            transform: Transform::from_xyz(2.0, 0.5, 6.0),
+            transform: Transform::from_xyz(0.0, 2.0, 3.0),
             ..default()
         },
         Player,
         Name::new("Player"),
         ThirdPersonCameraTarget,
-        Speed(2.5),
-        // Collider::cylinder(0.5, 0.25),
-        // RigidBody::Dynamic,
+        Speed(2.0),
+        CharacterControllerBundle::new(Collider::capsule(0.4, 1.0), Vector::NEG_Y * 9.81 * 2.0)
+            .with_movement(30.0, 0.92, 7.0, (30.0 as Scalar).to_radians()),
     );
 
     commands.spawn(player);
