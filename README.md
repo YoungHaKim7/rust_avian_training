@@ -4,6 +4,8 @@
 - https://youtu.be/__8rhqHc82I?si=TUmJjkxtO74FuLO9 
   - https://github.com/AndrewCS149/bevy_tutorials/tree/master/third_person_beginner/tutorial_4
 
+- 카메라를 자유롭게 플레이어 움직이는데로 카메라 움직이기
+  - https://github.com/AndrewCS149/bevy_third_person_camera
 
 # avian2d & 3d NVIDIA저작권때문에 살짝 코드 바꿔서 나옴.(xpbd)
 
