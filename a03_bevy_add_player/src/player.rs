@@ -11,24 +11,43 @@ impl Plugin for PlayerPlugin {
     }
 }
 
-pub fn spawn_player(
-    mut commands: Commands,
-    asset_server: Res<AssetServer>, // fn spawn_player(
-                                    // mut commands: Commands,
-                                    // mut meshes: ResMut<Assets<Mesh>>,
-                                    // mut materials: ResMut<Assets<StandardMaterial>>,
-) {
+fn spawn_player(mut commands: Commands, assets: Res<AssetServer>) {
+    // let flashlight = (
+    //     SpotLightBundle {
+    //         spot_light: SpotLight {
+    //             color: Color::rgba(1.0, 1.0, 0.47, 1.0),
+    //             range: 10.0,
+    //             intensity: 4000.0 * 1000.0,
+    //             outer_angle: 0.5,
+    //             inner_angle: 0.4,
+    //             shadows_enabled: true,
+    //             ..default()
+    //         },
+    //         transform: Transform::from_xyz(0.0, 0.25, -0.3),
+    //         ..default()
+    //     },
+    //     Name::new("Flashlight"),
+    // );
+
     let player = (
-        SpriteBundle {
-            texture: asset_server.load("player/Player.glft#Scene0"),
+        SceneBundle {
+            scene: assets.load("player/Player.gltf#Scene0"),
+            // scene: assets.load("player/player_character.glb#Scene0"),
+            transform: Transform::from_xyz(2.0, 0.5, 6.0),
             ..default()
         },
+        // ActiveEvents::COLLISION_EVENTS,
         Player,
+        Name::new("Player"),
         ThirdPersonCameraTarget,
         Speed(2.5),
-        // CharacterControllerBundle::new(Collider::capsule(0.4, 1.0), Vector::NEG_Y * 9.81 * 2.0)
-        // .with_movement(30.0, 0.92, 7.0, (30.0 as Scalar).to_radians()),
+        // Jump(4.0),
+        // Grounded(false),
+        // LockedAxes::ROTATION_LOCKED_X | LockedAxes::ROTATION_LOCKED_Z,
+        Collider::cylinder(0.5, 0.25),
+        RigidBody::Dynamic,
     );
+
     commands.spawn(player);
 }
 
