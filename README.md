@@ -1,1 +1,6 @@
-# rust_avian_training
+# rust_avian_training# Result
+
+```bash
+
+```
+
