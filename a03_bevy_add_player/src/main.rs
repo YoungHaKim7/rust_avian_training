@@ -24,6 +24,7 @@
 use avian3d::prelude::*;
 use bevy::prelude::*;
 
+use bevy_third_person_camera::ThirdPersonCameraPlugin;
 use examples_common_3d::ExampleCommonPlugin;
 
 use camera::CameraPlugin;
@@ -43,6 +44,7 @@ fn main() {
             PlayerPlugin,
             PhysicsPlugins::default(),
             CharacterControllerPlugin,
+            ThirdPersonCameraPlugin,
         ))
         .add_systems(Startup, setup)
         .run();
