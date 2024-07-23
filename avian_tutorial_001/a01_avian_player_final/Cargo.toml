@@ -1,24 +1,16 @@
 [package]
-name = "avian_tutorial_001"
+name = "a01_avian_player_final"
 version = "0.1.0"
 edition = "2021"
-
-[workspace]
-members = [
-    "crates/*",
-    "a01_avian_player",
-    "a01_avian_player_final"
-]
-resolver = "2"
 
 [features]
 use-debug-plugin = []
 
 [dependencies]
 bevy = "0.14.0"
-avian3d = { git = "https://github.com/Jondolf/avian"}
+avian3d = { git = "https://github.com/Jondolf/avian" }
 
-examples_common_3d = {path ="crates/examples_common_3d"}
+examples_common_3d = { path = "../crates/examples_common_3d" }
 
 libm = { version = "0.2", optional = true }
 parry3d = { version = "0.15", optional = true }
@@ -45,12 +37,3 @@ opt-level = 1
 
 [profile.dev.package."*"]
 opt-level = 3
-
-[[bin]]
-name = "a01_avian_player"
-path = "a01_avian_player/src/main.rs"
-
-
-[[bin]]
-name = "a01_avian_player_final"
-path = "a01_avian_player_final/src/main.rs"
