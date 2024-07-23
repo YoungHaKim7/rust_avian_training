@@ -11,17 +11,12 @@ impl Plugin for PlayerPlugin {
     }
 }
 
-fn spawn_player(
-    mut commands: Commands,
-    mut meshes: ResMut<Assets<Mesh>>,
-    mut materials: ResMut<Assets<StandardMaterial>>,
-) {
+fn spawn_player(mut commands: Commands, assets: Res<AssetServer>) {
     let player = (
-        PbrBundle {
-            mesh: meshes.add(Capsule3d::new(0.4, 1.0)),
-            material: materials.add(Color::srgb(0.8, 0.7, 0.6)),
+        SceneBundle {
+            scene: assets.load("player/Player.gltf#Scene0"),
             transform: Transform::from_xyz(0.0, 1.5, 0.0),
-            ..default()
+            ..Default::default()
         },
         Player,
         ThirdPersonCameraTarget,
